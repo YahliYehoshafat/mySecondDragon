@@ -1,3 +1,4 @@
 from Pet import Pet
+from typing import List
 
-pets: Pet = []
+pets: List[Pet] = []

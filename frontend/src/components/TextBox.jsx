@@ -4,7 +4,7 @@ function TextBox() {
   return (
     <>
       <br />
-      <Form.Control type="text" placeholder="Normal text" />
+      <Form.Control type="text" placeholder="Choose a name for your pet :)" size="lg" />
       <br />
     </>
   );

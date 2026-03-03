@@ -6,7 +6,7 @@ import "./NavBar.css";
 
 function NavBar() {
   return (
-    <Navbar expand="lg" className="NavBar rounded w-100" fixed="top">
+    <Navbar expand="lg" className="NavBar rounded w-100" fixed="top" >
       <Container fluid>
         <Navbar.Brand href="#home">Pets App</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
