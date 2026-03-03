@@ -1,20 +1,18 @@
-from flask import Flask
+from flask import Flask, jsonify
+from Pets import pets
+
 
 app = Flask(__name__)
-
-@app.route('/home')
-def home():
-    return 'Hello World'
 
 
 @app.route('/pet_status')
 def pet_status():
-    return 'Hello World'
+    return jsonify(pets)
 
 
 @app.route('/pet_properties')
 def pet_properties():
-    return 'Hello World'
+    return jsonify(pets)
 
 
 @app.route('/create_an_new_pet')
