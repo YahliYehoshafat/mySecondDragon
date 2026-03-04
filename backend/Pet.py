@@ -12,6 +12,11 @@ class Pet(object):
         self._energy: int = 50
         self._points: int = 0
         self._history: List[str] = []
+        self._pet_profile = self.calculate_pet_profile()
+
+    @property
+    def pet_profile(self) -> float:
+        return self._pet_profile
 
     @property
     def name(self) -> str:
@@ -93,7 +98,6 @@ class Pet(object):
         self.change_property(Properties.HAPPINESS.value, 5)
         self.change_points(10)
         self.add_history_action("eat")
-        self.print_pet_health("Your animal ate food!")
 
     def sleep(self) -> None:
         """
@@ -104,7 +108,6 @@ class Pet(object):
         self.change_property(Properties.HAPPINESS.value, 5)
         self.change_points(10)
         self.add_history_action("sleep")
-        self.print_pet_health("Your animal went to sleep!")
 
     def play(self) -> None:
         """
@@ -116,11 +119,17 @@ class Pet(object):
         self.change_property(Properties.HAPPINESS.value, 10)
         self.change_points(10)
         self.add_history_action("play")
-        self.print_pet_health("Your animal played!")
 
     @staticmethod
     def print_pet_health(data):
         print(data)
+
+    def calculate_pet_profile(self) -> float:
+        """
+        
+        Calculate animal state
+        """
+        return (self.energy + self.happiness + self.hunger) / 3
 
     def to_dict(self) -> Dict:
         return {
@@ -130,5 +139,6 @@ class Pet(object):
             "happiness": self.happiness,
             "energy": self.energy,
             "points": self.points,
-            "history": self.history
+            "history": str(self.history),
+            "pet_profile": self.calculate_pet_profile()
         }

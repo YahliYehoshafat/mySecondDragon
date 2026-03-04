@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+from flask.wrappers import Response
 from flask_cors import CORS
 from TypesOfPets import TypesOfPets
 from Pet import Pet
@@ -15,7 +16,7 @@ def pet_info():
 
 
 @app.route('/performing_an_action/<index>/<action>')
-def performing_an_action(index: int, action: str):
+def performing_an_action(index: int, action: str) -> Response:
     match action:
         case "sleep":
             pets[int(index)].sleep()
@@ -27,12 +28,16 @@ def performing_an_action(index: int, action: str):
 
 
 @app.route('/pet_properties')
-def pet_properties():
+def pet_properties() -> Response:
     return jsonify([pet.to_dict() for pet in pets])
 
 
 @app.route('/create_an_new_pet', methods=['POST'])
-def create_an_new_pet():
+def create_an_new_pet() -> Response:
+    """
+
+    Creates a new pet and adds it to the pets array.
+    """
     pet_data = request.get_json()
     pet_name = pet_data.get("name")
     pet_type = pet_data.get("type")

@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 
 function CreateANewPet() {
+  //Create a new pet page
     const navigate = useNavigate();
     const [data, setData] = useState({
       name: "",
@@ -20,6 +21,7 @@ function CreateANewPet() {
       });
     };
 
+    //Sending the required parameters to the server in order to create a new pet.
     const handleSubmit = async (event) => {
       event.preventDefault();
       const response = await fetch("http://localhost:5000/create_an_new_pet",{
@@ -33,11 +35,9 @@ function CreateANewPet() {
       console.log(forward_data, data.name, data.type);
       navigate('/');
     };
-
-
+    
     return (
       <>
-        <NavBar/>
         <br />
         <Form.Control type="text" name="name" value={data.name} onChange={handleChange} placeholder="Choose a name for your pet :)" size="lg" />
         <br />

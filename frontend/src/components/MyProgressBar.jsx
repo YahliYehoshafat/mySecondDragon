@@ -1,6 +1,7 @@
 import ProgressBar from 'react-bootstrap/ProgressBar';
 
 function MyProgressBar({ value, label }) {
+  //A progress bar that allows you to see the properties status in a visually appealing and eye-friendly way.
   return (
     <ProgressBar 
       now={value} 

@@ -7,6 +7,7 @@ import koalaImg from "../Images/Koala.png";
 import squirrelImg from "../Images/Squirrel.png";
 
 function PetProperties() {
+  //Pet properties page, here you receive important information about the pet, and in addition, you can perform actions with your pet!
   const location = useLocation();
   const [pet, setPet] = useState(null);
   const petTypeImages = {
@@ -14,13 +15,14 @@ function PetProperties() {
     koala: koalaImg,
     squirrel: squirrelImg,
   };
+  //Information about the pet, received from the PetInfo file.
   const { pet_index, pet_type, name, happiness, energy, hunger } = location.state || {};
   const [progress, setProgress] = useState([hunger, happiness, energy]);
   console.log("progress = "+progress)
   console.log("happiness = "+happiness)
   const typeKey = pet_type.toLowerCase(); 
   const imgSrc = petTypeImages[typeKey];
-
+  //Access the endpoint on the server responsible for performing actions like sleeping, playing, and eating in order to take care of the pet.
   const handleSubmit = async (pet_index, action) => {
     try {
       const response = await fetch(`http://localhost:5000/performing_an_action/${pet_index}/${action}`);
@@ -34,7 +36,6 @@ function PetProperties() {
       console.error(error);
     }
   };
-
   return (
     <>
         <Image 

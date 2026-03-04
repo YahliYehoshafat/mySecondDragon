@@ -5,6 +5,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import "./NavBar.css";
 
 function NavBar() {
+  //A nav bar that allows navigation between pages on the website.
   return (
     <Navbar expand="lg" className="NavBar rounded w-100" fixed="top" >
       <Container fluid>

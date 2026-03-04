@@ -7,39 +7,36 @@ import koalaImg from "../Images/Koala.png";
 import squirrelImg from "../Images/Squirrel.png";
 
 function PetInfo() {
+  //Pet info page, it shows us all the pets we have and allows us to get the status and properties of each one by navigating to the appropriate page.
   const [pets, setPets] = useState([]);
   const [selectedIndex, setSelectedIndex] = useState(null);
   const [selectedPet, setSelectedPet] = useState(null); 
   const navigate = useNavigate();
-
-
   const handleSelect = (pet, index) => {
     setSelectedPet(pet);
     setSelectedIndex(index)
   };
-
+  //Navigate to the page PetProperties
   const PetProperties = () => {
     if (selectedPet) {
-      console.log("energy = " + selectedIndex.energy);
       navigate('/PetProperties', 
         {state: {pet_index: selectedIndex, pet_type: selectedPet.pet_type, pet_name: selectedPet.name, happiness: selectedPet.happiness, energy: selectedPet.energy, hunger: selectedPet.hunger}});
     } 
   };
-
+  //Navigate to the page PetStatus
   const PetStatus = () => {
     console.log("pet type = "+selectedPet.name)
     if (selectedPet) {
       navigate('/PetStatus', 
-        {state: {pet_type: selectedPet.pet_type, pet_name: selectedPet.name, points: selectedPet.points, history: selectedPet.history}});
+        {state: {pet_type: selectedPet.pet_type, pet_name: selectedPet.name, points: selectedPet.points, history: selectedPet.history, pet_profile: selectedPet.pet_profile}});
     } 
   };
-
   const petTypeImages = {
     goat: goatImg,
     koala: koalaImg,
     squirrel: squirrelImg,
   };
-
+  //Access the server to retrieve all the pets the user has.
   useEffect(() => {
     fetch("http://localhost:5000/pet_info")
       .then(response => response.json())
@@ -65,33 +62,33 @@ function PetInfo() {
 
           return (
             <div
-              key={index} 
-              onClick={() => handleSelect(pet, index)}
-              style={{
-                cursor: "pointer",
-                width: "auto",
-                textAlign: "center",
-                border: isSelected ? "4px solid #007bff" : "2px solid #ccc",
-                borderRadius: "12px",
-                padding: "4px",
-                transition: "all 0.2s",
-              }}
-            >
-              <img
-                src={imgSrc || "/default-pet.png"}
-                alt={pet.name}
+                key={index} 
+                onClick={() => handleSelect(pet, index)}
                 style={{
-                  width: "100%",
-                  height: "190px",
-                  objectFit: "cover",
-                  borderRadius: "8px",
-                  boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+                  cursor: "pointer",
+                  width: "auto",
+                  textAlign: "center",
+                  border: isSelected ? "4px solid #007bff" : "2px solid #ccc",
+                  borderRadius: "12px",
+                  padding: "4px",
+                  transition: "all 0.2s",
                 }}
-              />
-              <p style={{ marginTop: "8px", fontWeight: "bold" }}>{pet.name}</p>
-            </div>
-          );
-        })}
+              >
+                <img
+                  src={imgSrc || "/default-pet.png"}
+                  alt={pet.name}
+                  style={{
+                    width: "100%",
+                    height: "190px",
+                    objectFit: "cover",
+                    borderRadius: "8px",
+                    boxShadow: "0 2px 6px rgba(0,0,0,0.3)",
+                  }}
+                />
+                <p style={{ marginTop: "8px", fontWeight: "bold" }}>{pet.name}</p>
+              </div>
+            );
+          })}
       </div>
 
       <div style={{ marginTop: "20px" }}>

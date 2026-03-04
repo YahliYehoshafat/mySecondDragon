@@ -7,9 +7,9 @@ import PetProperties from './pages/PetProperties';
 import PetStatus from './pages/PetStatus';
 import 'bootstrap/dist/css/bootstrap.min.css'; 
 function App() {
+  //The main file, where the routes between the pages are defined.
   return (
     <BrowserRouter>
-      <NavBar />
       <Routes>  
         <Route path="/" element={<Home />} /> 
         <Route path="/PetInfo" element={<PetInfo />} /> 

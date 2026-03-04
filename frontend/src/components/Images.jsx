@@ -7,6 +7,7 @@ import koalaImg from "../Images/Koala.png";
 import squirrelImg from "../Images/Squirrel.png";
 
 function Images() {
+  //Creating three images next to each other for website decoration
   return (
     <Container>
       <Row>
