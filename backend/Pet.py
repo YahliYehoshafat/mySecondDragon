@@ -1,6 +1,6 @@
 from TypesOfPets import TypesOfPets
 from Properties import Properties
-from typing import List
+from typing import List, Dict
 
 
 class Pet(object):
@@ -121,3 +121,14 @@ class Pet(object):
     @staticmethod
     def print_pet_health(data):
         print(data)
+
+    def to_dict(self) -> Dict:
+        return {
+            "name": self._name,
+            "pet_type": self._pet_type,
+            "hunger": self.hunger,
+            "happiness": self.happiness,
+            "energy": self.energy,
+            "points": self.points,
+            "history": self.history
+        }

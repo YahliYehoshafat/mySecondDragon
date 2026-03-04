@@ -2,6 +2,6 @@ from enum import Enum
 
 
 class TypesOfPets(Enum):
-    CAT = "cat"
-    DOG = "dog"
-    DOLPHIN = "dolphin"
+    GOAT = "goat"
+    KOALA = "koala"
+    SQUIRREL = "squirrel"
