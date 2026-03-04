@@ -2,6 +2,7 @@ import Image from 'react-bootstrap/Image';
 import goatImg from "../Images/Goat.png";
 import { useLocation } from "react-router-dom";
 import MyProgressBar from "../components/MyProgressBar"
+import NavBar from "../components/NavBar";
 import { useEffect, useState } from "react";
 import koalaImg from "../Images/Koala.png";
 import squirrelImg from "../Images/Squirrel.png";
@@ -38,6 +39,7 @@ function PetProperties() {
   };
   return (
     <>
+        <NavBar/>
         <Image 
           style={{ 
               position: "fixed",  

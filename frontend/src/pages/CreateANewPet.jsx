@@ -38,6 +38,7 @@ function CreateANewPet() {
     
     return (
       <>
+        <NavBar/>
         <br />
         <Form.Control type="text" name="name" value={data.name} onChange={handleChange} placeholder="Choose a name for your pet :)" size="lg" />
         <br />

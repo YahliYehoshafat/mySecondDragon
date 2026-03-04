@@ -2,6 +2,7 @@ import goatImg from "../Images/Goat.png";
 import koalaImg from "../Images/Koala.png";
 import squirrelImg from "../Images/Squirrel.png";
 import { useLocation } from "react-router-dom";
+import NavBar from "../components/NavBar";
 
 
 function PetStatus() {
@@ -18,6 +19,7 @@ function PetStatus() {
   const imgSrc = petTypeImages[typeKey];
   return (
     <>
+        <NavBar/>
         <img
           src={imgSrc || "/default-pet.png"}
           alt={pet_type}
