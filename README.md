@@ -6,11 +6,25 @@ In this game, you’ll be able to create animals and take care of them. To play 
 
 2) Open two shells from the VSCODE terminal.
 
-3) In one shell, navigate to the "backend" folder and run the server.py file (this is the Flask server for the game, responsible for the backend).
+3) In one shell, navigate to the "backend" folder and **before running the server**, you first need to activate the project's virtual environment by running the following command:                source backend/myenv/bin/activate.
+Then, run the server.py file (this is the Flask server for the game, responsible for the backend).
 
 4) In the second shell, navigate to the "frontend" folder and run the following commands: npm install, npm run dev.
 
 5) After running the npm run dev command, you’ll see the port on which the system is running. Access the system through localhost and the port that appears after running the command.
 
-That’s it! Now you can play. Enjoy the game!
+---
 
+How to create a new pet in the game?
+
+1) Go to the "Create A New Pet" section in the navbar at the top.
+
+2) In the text box, enter the name of the pet you want.
+
+3) In the dropdown menu, you'll see three types of pets you can create. Choose the type of pet you want to create.
+
+4) Once you've chosen the name and type of pet, click the "Create My Pet" button, and your new pet will be created!
+
+---
+
+That’s it! Now you can play. Enjoy the game!
