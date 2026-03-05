@@ -22,14 +22,11 @@ def performing_an_action(index: int, action: str) -> Response:
     match action:
         case "sleep":
             pet.sleep()
-            insert_to_db("sleep", pet.energy, pet.hunger, pet.happiness, pet.pet_profile)
         case "play":
             pet.play()
-            insert_to_db("play", pet.energy, pet.hunger, pet.happiness, pet.pet_profile)
         case "eat":
             pet.eat()
-            insert_to_db("eat", pet.energy, pet.hunger, pet.happiness, pet.pet_profile)
-    return jsonify(pets[int(index)].to_dict())
+    return jsonify(pet.to_dict())
 
 
 @app.route('/pet_properties')
