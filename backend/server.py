@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask.wrappers import Response
 from flask_cors import CORS
+from pets_db import insert_to_db
 from TypesOfPets import TypesOfPets
 from Pet import Pet
 from Pets import pets
@@ -17,13 +18,17 @@ def pet_info():
 
 @app.route('/performing_an_action/<index>/<action>')
 def performing_an_action(index: int, action: str) -> Response:
+    pet = pets[int(index)]
     match action:
         case "sleep":
-            pets[int(index)].sleep()
+            pet.sleep()
+            insert_to_db("sleep", pet.energy, pet.hunger, pet.happiness, pet.pet_profile)
         case "play":
-            pets[int(index)].play()
+            pet.play()
+            insert_to_db("play", pet.energy, pet.hunger, pet.happiness, pet.pet_profile)
         case "eat":
-            pets[int(index)].eat()
+            pet.eat()
+            insert_to_db("eat", pet.energy, pet.hunger, pet.happiness, pet.pet_profile)
     return jsonify(pets[int(index)].to_dict())
 
 
@@ -46,4 +51,4 @@ def create_an_new_pet() -> Response:
 
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000, debug=True)
