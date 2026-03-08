@@ -26,17 +26,30 @@ function PetProperties() {
   //Access the endpoint on the server responsible for performing actions like sleeping, playing, and eating in order to take care of the pet.
   const handleSubmit = async (pet_index, action) => {
     try {
-      const response = await fetch(`http://localhost:5000/performing_an_action/${pet_index}/${action}`);
+      const response = await fetch(`http://localhost:5000/performing_an_action`, {
+        method: 'POST',               
+        headers: {
+          'Content-Type': 'application/json', 
+        },
+        body: JSON.stringify({       
+          pet_index: pet_index,
+          action: action
+        })
+      });
+
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
+
       const data = await response.json();
       setPet(data); 
-      setProgress([data.hunger, data.happiness, data.energy])
+      setProgress([data.hunger, data.happiness, data.energy]);
+      
     } catch (error) {
       console.error(error);
     }
   };
+
   return (
     <>
         <NavBar/>
