@@ -15,9 +15,12 @@ def pet_info():
     return jsonify([pet.to_dict() for pet in pets])
 
 
-@app.route('/performing_an_action/<index>/<action>')
-def performing_an_action(index: int, action: str) -> Response:
-    pet = pets[int(index)]
+@app.route('/performing_an_action', methods=['POST'])
+def performing_an_action() -> Response:
+    data = request.get_json()
+    pet_index = int(data['pet_index'])
+    action = data['action']
+    pet = pets[pet_index]
     match action:
         case "sleep":
             pet.sleep()
@@ -28,13 +31,8 @@ def performing_an_action(index: int, action: str) -> Response:
     return jsonify(pet.to_dict())
 
 
-@app.route('/pet_properties')
-def pet_properties() -> Response:
-    return jsonify([pet.to_dict() for pet in pets])
-
-
-@app.route('/create_an_new_pet', methods=['POST'])
-def create_an_new_pet() -> Response:
+@app.route('/create_a_new_pet', methods=['POST'])
+def create_a_new_pet() -> Response:
     """
 
     Creates a new pet and adds it to the pets array.
