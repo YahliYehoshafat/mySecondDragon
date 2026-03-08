@@ -1,7 +1,6 @@
 from flask import Flask, request, jsonify
 from flask.wrappers import Response
 from flask_cors import CORS
-from pets_db import insert_to_db
 from TypesOfPets import TypesOfPets
 from Pet import Pet
 from Pets import pets
