@@ -12,13 +12,13 @@ function Images() {
     <Container>
       <Row>
         <Col xs={6} md={4}>
-          <Image width="230" height="auto" styles={{margin: "40px"}} src={goatImg} rounded />
+          <Image width="230" height="auto" style={{margin: "40px"}} src={goatImg} rounded />
         </Col>
         <Col xs={6} md={4}>
-          <Image width="270" height="auto" styles={{margin: "40px"}} src={koalaImg} rounded />
+          <Image width="270" height="auto" style={{margin: "40px"}} src={koalaImg} rounded />
         </Col>
         <Col xs={6} md={4}>
-          <Image width="180" height="auto" styles={{margin: "40px"}} src={squirrelImg} rounded />
+          <Image width="180" height="auto" style={{margin: "40px"}} src={squirrelImg} rounded />
         </Col>
       </Row>
     </Container>
