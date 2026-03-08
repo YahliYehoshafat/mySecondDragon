@@ -24,7 +24,7 @@ function CreateANewPet() {
     //Sending the required parameters to the server in order to create a new pet.
     const handleSubmit = async (event) => {
       event.preventDefault();
-      const response = await fetch("http://localhost:5000/create_an_new_pet",{
+      const response = await fetch("http://localhost:5000/create_a_new_pet",{
         method: "POST",
         headers: {
           "Content-Type": "application/json"
