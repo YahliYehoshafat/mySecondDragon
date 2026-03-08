@@ -1,10 +1,9 @@
-from TypesOfPets import TypesOfPets
 from Properties import Properties
 from typing import List, Dict
 
 
 class Pet(object):
-    def __init__(self, name: str, pet_type: TypesOfPets):
+    def __init__(self, name: str, pet_type: str):
         self._name: str = name
         self._pet_type: str = pet_type
         self._hunger: int = 50
@@ -31,28 +30,28 @@ class Pet(object):
         return self._pet_type
     
     @pet_type.setter
-    def pet_type(self, pet_type: TypesOfPets) -> None:
+    def pet_type(self, pet_type: str) -> None:
         self._pet_type = pet_type
 
     @property
     def hunger(self) -> int:
         return self._hunger
     
-    def change_property(self, property: str, level: int) -> None:
+    def change_property(self, prop: str, level: int) -> None:
         """
         
         Changes property score
         :param level: How much do you want to reduce/add to your property param
-        :param property: property name
+        :param prop: property name
         :param property_name: property name with "_" char
         """
-        property_name = "_" + property
+        property_name = "_" + prop
         setattr(self, property_name, getattr(self, property_name) + level)
         if getattr(self, property_name) > 100:
             setattr(self, property_name, 100)
         elif getattr(self, property_name) <= 0:
-            self.change_points(-30)
             setattr(self, property_name, 0)
+        self.calculate_pet_profile()
     
     @property
     def happiness(self) -> int:
@@ -120,16 +119,13 @@ class Pet(object):
         self.change_points(10)
         self.add_history_action("play")
 
-    @staticmethod
-    def print_pet_health(data):
-        print(data)
-
     def calculate_pet_profile(self) -> float:
         """
         
         Calculate animal state
         """
-        return (self.energy + self.happiness + self.hunger) / 3
+        self._pet_profile =  (self.energy + self.happiness + self.hunger) / 3
+        return self._pet_profile
 
     def to_dict(self) -> Dict:
         return {
@@ -140,5 +136,5 @@ class Pet(object):
             "energy": self.energy,
             "points": self.points,
             "history": str(self.history),
-            "pet_profile": self.calculate_pet_profile()
+            "pet_profile": self._pet_profile
         }
